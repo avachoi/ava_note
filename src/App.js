@@ -1,7 +1,16 @@
 import "./App.css";
+import Notebooks from "./Notebooks";
+import Notes from "./Notes";
+import Main from "./Main";
 
 function App() {
-	return <div className="App">Ava note</div>;
+	return (
+		<div className="App">
+			<Notebooks />
+			<Notes />
+			<Main />
+		</div>
+	);
 }
 
 export default App;
