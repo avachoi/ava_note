@@ -8,9 +8,14 @@ function Notes({ notes, addNote }) {
 				{notes.map((note) => (
 					<div>
 						<h4>{note.title}</h4>
-						<p>{note.body}</p>
+						<p>{note.body && note.body.substr(0, 10) + "..."}</p>
 						<p>
-							<small>{note.date}</small>
+							<small className="noteDate">
+								{new Date(note.date).toLocaleDateString("en-US", {
+									hour: "2-digit",
+									minute: "2-digit",
+								})}
+							</small>
 						</p>
 					</div>
 				))}

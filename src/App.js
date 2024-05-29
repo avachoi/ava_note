@@ -13,7 +13,7 @@ function App() {
 		const newNote = {
 			id: uuid(),
 			title: "title",
-			body: "noteBody",
+			body: "noteBodybody",
 			date: Date.now(),
 		};
 		setNotes([newNote, ...notes]);
