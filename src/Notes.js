@@ -1,14 +1,20 @@
-function Notes() {
+function Notes({ notes, addNote }) {
 	return (
 		<div className="notes">
 			<h2>Notes</h2>
-			<button>+</button>
+			<button onClick={addNote}>+</button>
 			<button>-</button>
-			<h4>note1</h4>
-			<p>preview for the note1</p>
-			<p>
-				<small>date</small>
-			</p>
+			<div className="notesList">
+				{notes.map((note) => (
+					<div>
+						<h4>{note.title}</h4>
+						<p>{note.body}</p>
+						<p>
+							<small>{note.date}</small>
+						</p>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
