@@ -1,0 +1,22 @@
+.app {
+	border: 1px solid black;
+	display: flex;
+}
+
+h5 {
+	color: blue;
+}
+
+/* notebooks */
+.notebooks {
+	background-color: #f1ebed;
+}
+/* notes */
+.notes {
+	background-color: #e1f2ec;
+}
+/* main */
+.main {
+	display: flex;
+	flex-direction: column;
+}

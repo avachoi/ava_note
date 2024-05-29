@@ -1,6 +1,6 @@
 function Notes() {
 	return (
-		<div className="notes col-3">
+		<div className="notes">
 			<h2>Notes</h2>
 			<button>+</button>
 			<button>-</button>
