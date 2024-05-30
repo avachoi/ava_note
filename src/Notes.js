@@ -1,12 +1,17 @@
-function Notes({ notes, addNote }) {
+function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 	return (
 		<div className="notes">
 			<h2>Notes</h2>
 			<button onClick={addNote}>+</button>
-			<button>-</button>
+			<button onClick={() => deleteNote(activeNote)}>-</button>
 			<div className="notesList">
 				{notes.map((note) => (
-					<div>
+					<div
+						key={note.id}
+						onClick={() => setActiveNote(note.id)}
+						value={note.id}
+						className={`${note.id === activeNote && "active"}`}
+					>
 						<h4>{note.title}</h4>
 						<p>{note.body && note.body.substr(0, 10) + "..."}</p>
 						<p>
