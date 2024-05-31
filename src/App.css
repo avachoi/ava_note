@@ -5,11 +5,18 @@
 	padding-left: 200px;
 	padding-right: 200px;
 }
-
+.header {
+	text-align: center;
+}
 h5 {
 	color: blue;
 }
-
+.heading {
+	font-size: 20px;
+}
+.section {
+	padding: 10px;
+}
 /* notebooks */
 .notebooks {
 	background-color: #f1ebed;

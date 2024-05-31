@@ -4,12 +4,14 @@ import { Container, Row } from "react-bootstrap";
 
 function Notebooks() {
 	return (
-		<div className="notebooks">
-			<h3>Notebooks</h3>
+		<div className="notebooks section">
+			<div className="header">
+				<h3 className="heading">Notebooks</h3>
 
-			<button>+</button>
+				<button>+</button>
 
-			<button>+</button>
+				<button>+</button>
+			</div>
 
 			<h5>notebook112</h5>
 		</div>

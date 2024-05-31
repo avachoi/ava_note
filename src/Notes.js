@@ -1,9 +1,12 @@
 function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 	return (
-		<div className="notes">
-			<h2>Notes</h2>
-			<button onClick={addNote}>+</button>
-			<button onClick={() => deleteNote(activeNote)}>-</button>
+		<div className="notes section">
+			<div className="header">
+				<h2 className="heading">Notes</h2>
+				<button onClick={addNote}>+</button>
+				<button onClick={() => deleteNote(activeNote)}>-</button>
+			</div>
+
 			<div className="notesList">
 				{notes.map((note) => (
 					<div
