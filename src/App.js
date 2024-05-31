@@ -51,17 +51,20 @@ function App() {
 
 	return (
 		<div className="app">
-			<Notebooks />
+			<h3 className="appName">Ava Note</h3>
+			<div className="content">
+				<Notebooks />
 
-			<Notes
-				notes={notes}
-				addNote={addNote}
-				deleteNote={deleteNote}
-				activeNote={activeNote}
-				setActiveNote={setActiveNote}
-			/>
+				<Notes
+					notes={notes}
+					addNote={addNote}
+					deleteNote={deleteNote}
+					activeNote={activeNote}
+					setActiveNote={setActiveNote}
+				/>
 
-			<Main activeNote={selectNote()} editNotes={editNotes} />
+				<Main activeNote={selectNote()} editNotes={editNotes} />
+			</div>
 		</div>
 	);
 }
