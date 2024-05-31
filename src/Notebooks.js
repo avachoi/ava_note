@@ -13,7 +13,9 @@ function Notebooks() {
 				<button>-</button>
 			</div>
 
-			<h5>notebook112</h5>
+			<h6>All notes</h6>
+			<h6>coding</h6>
+			<h6>deleted</h6>
 		</div>
 	);
 }

@@ -1,4 +1,5 @@
 function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
+	const sortedNotes = notes.sort((a, b) => b.date - a.date);
 	return (
 		<div className="notes section">
 			<div className="header">
@@ -8,14 +9,14 @@ function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 			</div>
 
 			<div className="notesList">
-				{notes.map((note) => (
+				{sortedNotes.map((note) => (
 					<div
 						key={note.id}
 						onClick={() => setActiveNote(note.id)}
 						value={note.id}
 						className={`${note.id === activeNote && "active"}`}
 					>
-						<h4>{note.title}</h4>
+						<h4>{`${note.title === "" ? "new note" : note.title}`}</h4>
 						<p>{note.body && note.body.substr(0, 10) + "..."}</p>
 						<p>
 							<small className="noteDate">

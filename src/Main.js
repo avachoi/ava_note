@@ -29,7 +29,14 @@ function Main({ activeNote, editNotes }) {
 					minute: "2-digit",
 				})}
 			</p>
-			{state === "edit" ? (
+			{state === "done" ? (
+				<div className="afterDone">
+					<h1 className="doneTitle">{activeNote.title}</h1>
+					<ReactMarkdown className="markdown-box" breaks>
+						{activeNote.body}
+					</ReactMarkdown>
+				</div>
+			) : (
 				<div className="editPart">
 					<input
 						type="text"
@@ -45,13 +52,6 @@ function Main({ activeNote, editNotes }) {
 						value={activeNote.body}
 						onChange={(e) => editField("body", e.target.value)}
 					/>
-				</div>
-			) : (
-				<div className="afterDone">
-					<h1 className="doneTitle">{activeNote.title}</h1>
-					<ReactMarkdown className="markdown-box" breaks>
-						{activeNote.body}
-					</ReactMarkdown>
 				</div>
 			)}
 		</div>

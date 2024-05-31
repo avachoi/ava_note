@@ -4,6 +4,7 @@
 	margin: auto;
 	padding-left: 200px;
 	padding-right: 200px;
+	height: 800px;
 }
 .header {
 	text-align: center;
@@ -24,6 +25,7 @@ h5 {
 /* notes */
 .notes {
 	background-color: #e1f2ec;
+	width: 200px;
 }
 /* main */
 .main {
@@ -63,4 +65,7 @@ button {
 	border-radius: 5px;
 	overflow: auto;
 	color: white;
+}
+#noteBox {
+	height: 500px;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import uuid from "react-uuid";
 import "./App.css";
 import Notebooks from "./Notebooks";
@@ -8,17 +8,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
-	const [notes, setNotes] = useState([]);
+	const [notes, setNotes] = useState(
+		localStorage.notes ? JSON.parse(localStorage.notes) : []
+	);
 	const [activeNote, setActiveNote] = useState(false); //id
+
+	useEffect(() => {
+		localStorage.setItem("notes", JSON.stringify(notes));
+	}, [notes]);
 
 	const addNote = () => {
 		const newNote = {
 			id: uuid(),
-			title: "title",
-			body: "body",
+			title: "",
+			body: "",
 			date: Date.now(),
 		};
-		setNotes([newNote, ...notes]);
+		const updatedNote = [newNote, ...notes];
+		setNotes(updatedNote);
+		console.log("notes", notes);
+		setActiveNote(newNote.id);
 	};
 	const deleteNote = (idToDeleteNote) => {
 		setNotes(notes.filter((note) => note.id !== idToDeleteNote));
