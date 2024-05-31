@@ -15,7 +15,7 @@ function App() {
 		const newNote = {
 			id: uuid(),
 			title: "title",
-			body: "noteBodybody",
+			body: "body",
 			date: Date.now(),
 		};
 		setNotes([newNote, ...notes]);
@@ -37,6 +37,7 @@ function App() {
 			return note;
 		});
 		setNotes(editiedNotes);
+		console.log("notes", notes);
 	};
 
 	return (

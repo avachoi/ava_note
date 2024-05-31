@@ -10,7 +10,7 @@ function Notebooks() {
 
 				<button>+</button>
 
-				<button>+</button>
+				<button>-</button>
 			</div>
 
 			<h5>notebook112</h5>

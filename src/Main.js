@@ -1,6 +1,7 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 function Main({ activeNote, editNotes }) {
-	const [state, setState] = useState();
+	const [state, setState] = useState("edit");
 	const editField = (key, value) => {
 		editNotes({
 			...activeNote,
@@ -14,7 +15,6 @@ function Main({ activeNote, editNotes }) {
 	}
 	return (
 		<div className="main col-7 section">
-			<p>Last edited on 3/8/24 6:27pm</p>
 			<div className="mainButtons">
 				<button className="edit" onClick={() => setState("edit")}>
 					edit
@@ -23,6 +23,12 @@ function Main({ activeNote, editNotes }) {
 					done
 				</button>
 			</div>
+			<p>
+				{new Date(activeNote.date).toLocaleDateString("en-US", {
+					hour: "2-digit",
+					minute: "2-digit",
+				})}
+			</p>
 			{state === "edit" ? (
 				<div className="editPart">
 					<input
@@ -43,7 +49,9 @@ function Main({ activeNote, editNotes }) {
 			) : (
 				<div className="afterDone">
 					<h1 className="doneTitle">{activeNote.title}</h1>
-					<div className="doneBody">{activeNote.body}</div>
+					<ReactMarkdown className="markdown-box" breaks>
+						{activeNote.body}
+					</ReactMarkdown>
 				</div>
 			)}
 		</div>
