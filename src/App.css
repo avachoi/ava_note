@@ -1,6 +1,9 @@
 .app {
 	border: 1px solid black;
 	display: flex;
+	margin: auto;
+	padding-left: 200px;
+	padding-right: 200px;
 }
 
 h5 {

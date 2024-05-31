@@ -9,7 +9,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
 	const [notes, setNotes] = useState([]);
-	const [activeNote, setActiveNote] = useState(false);
+	const [activeNote, setActiveNote] = useState(false); //id
 
 	const addNote = () => {
 		const newNote = {
@@ -22,8 +22,23 @@ function App() {
 	};
 	const deleteNote = (idToDeleteNote) => {
 		setNotes(notes.filter((note) => note.id !== idToDeleteNote));
-		console.log("notes", notes);
 	};
+
+	const selectNote = () => {
+		let selectedNote = notes.find((note) => note.id === activeNote);
+		return selectedNote;
+	};
+
+	const editNotes = (editedNote) => {
+		let editiedNotes = notes.map((note) => {
+			if (note.id === activeNote) {
+				return editedNote;
+			}
+			return note;
+		});
+		setNotes(editiedNotes);
+	};
+
 	return (
 		<div className="app">
 			<Notebooks />
@@ -36,7 +51,7 @@ function App() {
 				setActiveNote={setActiveNote}
 			/>
 
-			<Main />
+			<Main activeNote={selectNote()} editNotes={editNotes} />
 		</div>
 	);
 }
