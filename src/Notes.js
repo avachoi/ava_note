@@ -16,8 +16,12 @@ function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 						value={note.id}
 						className={`${note.id === activeNote && "active"}`}
 					>
-						<h4>{`${note.title === "" ? "new note" : note.title}`}</h4>
-						<p>{note.body && note.body.substr(0, 10) + "..."}</p>
+						<h4 className="previewTitle">{`${
+							note.title === "" ? "new note" : note.title
+						}`}</h4>
+						<p className="previewBody">
+							{note.body && note.body.substr(0, 20) + "..."}
+						</p>
 						<p>
 							<small className="noteDate">
 								{new Date(note.date).toLocaleDateString("en-US", {

@@ -1,9 +1,12 @@
+.appName {
+	padding: 10px;
+}
 .content {
-	border: 1px solid #e1f2ec;
+	border: 5px solid #e1f2ec;
 	display: flex;
 
 	margin: auto;
-	width: 1500px;
+	width: 1200px;
 	height: 800px;
 }
 .appName {
@@ -26,15 +29,32 @@ h5 {
 .notebooks {
 	background-color: #f1ebed;
 }
+
 /* notes */
 .notes {
 	background-color: #e1f2ec;
 	width: 200px;
 }
+.noteDate {
+	color: grey;
+	font-size: 10px;
+}
+.previewBody {
+	margin: 0px;
+	color: #959595;
+}
+.previewTitle {
+	margin: 0px;
+}
+.header > * {
+	margin: 15px;
+}
+
 /* main */
 .main {
 	display: flex;
 	flex-direction: column;
+	width: 850px;
 }
 .active {
 	border: 2px solid #f1b4c9;
@@ -46,8 +66,9 @@ h5 {
 }
 button {
 	border: 1px solid white;
-	background-color: none;
+	background-color: white;
 	color: grey;
+	margin: 10px;
 }
 
 .markdown-box {
@@ -57,7 +78,7 @@ button {
 	border-radius: 5px;
 }
 .markdown-box code {
-	background-color: #565656; /* Change to your desired background color */
+	background-color: #393939; /* Change to your desired background color */
 	padding: 2px 4px;
 	border-radius: 4px;
 	font-family: "Courier New", Courier, monospace;
@@ -72,4 +93,11 @@ button {
 }
 #noteBox {
 	height: 500px;
+}
+.editTitle {
+	font-size: 30px;
+	border: none;
+}
+.editTextarea {
+	border: none;
 }

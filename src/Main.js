@@ -14,7 +14,7 @@ function Main({ activeNote, editNotes }) {
 		return <div>No note selected</div>;
 	}
 	return (
-		<div className="main col-7 section">
+		<div className="main section">
 			<div className="mainButtons">
 				<button className="edit" onClick={() => setState("edit")}>
 					edit
@@ -39,6 +39,7 @@ function Main({ activeNote, editNotes }) {
 			) : (
 				<div className="editPart">
 					<input
+						className="editTitle"
 						type="text"
 						id="title"
 						autoFocus
@@ -47,6 +48,7 @@ function Main({ activeNote, editNotes }) {
 						onChange={(e) => editField("title", e.target.value)}
 					/>
 					<textarea
+						className="editTextarea"
 						id="noteBox"
 						placeholder="Write your note"
 						value={activeNote.body}

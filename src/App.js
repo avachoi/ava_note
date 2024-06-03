@@ -13,6 +13,9 @@ function App() {
 	);
 	const [activeNote, setActiveNote] = useState(false); //id
 
+	const allNotes = notes;
+	const deleted = [];
+	const [noteBooks, setNoteBooks] = useState([allNotes, deleted]);
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
 	}, [notes]);
@@ -48,12 +51,18 @@ function App() {
 		setNotes(editiedNotes);
 		console.log("notes", notes);
 	};
+	const addNoteBook = () => {
+		const newNoteBook = [];
+		const updatedNotebooks = [newNoteBook, ...noteBooks];
+		setNoteBooks(updatedNotebooks);
+		// setActiveNotebook=(newNoteBook.id)
+	};
 
 	return (
 		<div className="app">
 			<h3 className="appName">Ava Note</h3>
 			<div className="content">
-				<Notebooks />
+				<Notebooks addNoteBook={addNoteBook} noteBooks={noteBooks} />
 
 				<Notes
 					notes={notes}
