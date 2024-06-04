@@ -29,6 +29,10 @@ h5 {
 .notebooks {
 	background-color: #f1ebed;
 }
+.activeNotebook {
+	color: red;
+	border: 2px solid black;
+}
 
 /* notes */
 .notes {

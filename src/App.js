@@ -13,12 +13,26 @@ function App() {
 	);
 	const [activeNote, setActiveNote] = useState(false); //id
 
-	const allNotes = notes;
-	const deleted = [];
+	const allNotes = {
+		id: uuid(),
+		title: "All notes",
+		list: notes,
+	};
+	const deleted = {
+		id: uuid(),
+		title: "deleted",
+		list: [],
+	};
 	const [noteBooks, setNoteBooks] = useState([allNotes, deleted]);
+	const [activeNoteBook, setActiveNotebook] = useState(false); //id
+
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
 	}, [notes]);
+	useEffect(() => {
+		// Logging the updated activeNoteBook
+		console.log("Updated activeNoteBook:", activeNoteBook);
+	}, [activeNoteBook]);
 
 	const addNote = () => {
 		const newNote = {
@@ -29,7 +43,6 @@ function App() {
 		};
 		const updatedNote = [newNote, ...notes];
 		setNotes(updatedNote);
-		console.log("notes", notes);
 		setActiveNote(newNote.id);
 	};
 	const deleteNote = (idToDeleteNote) => {
@@ -39,6 +52,12 @@ function App() {
 	const selectNote = () => {
 		let selectedNote = notes.find((note) => note.id === activeNote);
 		return selectedNote;
+	};
+	const selectNoteBook = () => {
+		let selectedNotBook = noteBooks.find(
+			(notebook) => notebook.id === activeNoteBook
+		);
+		return selectedNotBook;
 	};
 
 	const editNotes = (editedNote) => {
@@ -52,17 +71,35 @@ function App() {
 		console.log("notes", notes);
 	};
 	const addNoteBook = () => {
-		const newNoteBook = [];
+		const newNoteBook = {
+			id: uuid(),
+			title: "new notebook",
+			list: [],
+		};
 		const updatedNotebooks = [newNoteBook, ...noteBooks];
 		setNoteBooks(updatedNotebooks);
-		// setActiveNotebook=(newNoteBook.id)
+		setActiveNotebook(newNoteBook.id);
+		console.log("new note created", activeNote);
+		console.log("newNoteBook", newNoteBook.id);
+		console.log("activeNotebook", activeNoteBook);
+	};
+	const deleteNoteBook = (idToDeleteNoteBook) => {
+		setNoteBooks(
+			noteBooks.filter((notebook) => notebook.id !== idToDeleteNoteBook)
+		);
 	};
 
 	return (
 		<div className="app">
 			<h3 className="appName">Ava Note</h3>
 			<div className="content">
-				<Notebooks addNoteBook={addNoteBook} noteBooks={noteBooks} />
+				<Notebooks
+					addNoteBook={addNoteBook}
+					noteBooks={noteBooks}
+					deleteNoteBook={deleteNoteBook}
+					activeNoteBook={activeNoteBook}
+					setActiveNotebook={setActiveNotebook}
+				/>
 
 				<Notes
 					notes={notes}

@@ -2,7 +2,15 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row } from "react-bootstrap";
 
-function Notebooks({ addNoteBook, Notebooks }) {
+function Notebooks({
+	addNoteBook,
+	noteBooks,
+	deleteNoteBook,
+	setActiveNotebook,
+	activeNotebook,
+}) {
+	console.log("noteBooks", noteBooks);
+	console.log("activeNotebook", activeNotebook);
 	return (
 		<div className="notebooks section">
 			<div className="header">
@@ -10,17 +18,20 @@ function Notebooks({ addNoteBook, Notebooks }) {
 
 				<button onClick={addNoteBook}>+</button>
 
-				<button>-</button>
+				<button onClick={deleteNoteBook}>-</button>
 			</div>
 
 			<div className="noteBooksList">
 				{noteBooks.map((noteBook) => (
-					<div></div>
+					<div
+						onClick={() => setActiveNotebook(noteBook.id)}
+						onClickCapture={() => console.log("clicked!!", activeNotebook)}
+						className={`${noteBook.id === activeNotebook && "activeNotebook"}`}
+					>
+						<h6>{noteBook.title}</h6>
+					</div>
 				))}
 			</div>
-			<h6>All notes</h6>
-			<h6>coding</h6>
-			<h6>deleted</h6>
 		</div>
 	);
 }
