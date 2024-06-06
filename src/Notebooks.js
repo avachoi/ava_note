@@ -7,10 +7,8 @@ function Notebooks({
 	noteBooks,
 	deleteNoteBook,
 	setActiveNotebook,
-	activeNotebook,
+	activeNoteBook,
 }) {
-	console.log("noteBooks", noteBooks);
-	console.log("activeNotebook", activeNotebook);
 	return (
 		<div className="notebooks section">
 			<div className="header">
@@ -24,9 +22,9 @@ function Notebooks({
 			<div className="noteBooksList">
 				{noteBooks.map((noteBook) => (
 					<div
+						key={noteBook.id}
 						onClick={() => setActiveNotebook(noteBook.id)}
-						onClickCapture={() => console.log("clicked!!", activeNotebook)}
-						className={`${noteBook.id === activeNotebook && "activeNotebook"}`}
+						className={`${noteBook.id === activeNoteBook && "activeNotebook"}`}
 					>
 						<h6>{noteBook.title}</h6>
 					</div>

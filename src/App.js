@@ -29,10 +29,6 @@ function App() {
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
 	}, [notes]);
-	useEffect(() => {
-		// Logging the updated activeNoteBook
-		console.log("Updated activeNoteBook:", activeNoteBook);
-	}, [activeNoteBook]);
 
 	const addNote = () => {
 		const newNote = {
@@ -68,7 +64,6 @@ function App() {
 			return note;
 		});
 		setNotes(editiedNotes);
-		console.log("notes", notes);
 	};
 	const addNoteBook = () => {
 		const newNoteBook = {
@@ -79,13 +74,10 @@ function App() {
 		const updatedNotebooks = [newNoteBook, ...noteBooks];
 		setNoteBooks(updatedNotebooks);
 		setActiveNotebook(newNoteBook.id);
-		console.log("new note created", activeNote);
-		console.log("newNoteBook", newNoteBook.id);
-		console.log("activeNotebook", activeNoteBook);
 	};
-	const deleteNoteBook = (idToDeleteNoteBook) => {
+	const deleteNoteBook = () => {
 		setNoteBooks(
-			noteBooks.filter((notebook) => notebook.id !== idToDeleteNoteBook)
+			noteBooks.filter((notebook) => notebook.id !== activeNoteBook)
 		);
 	};
 
