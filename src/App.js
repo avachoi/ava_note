@@ -23,12 +23,19 @@ function App() {
 		title: "deleted",
 		list: [],
 	};
-	const [noteBooks, setNoteBooks] = useState([allNotes, deleted]);
+	const [noteBooks, setNoteBooks] = useState(
+		localStorage.noteBooks
+			? JSON.parse(localStorage.noteBooks)
+			: [allNotes, deleted]
+	);
 	const [activeNoteBook, setActiveNotebook] = useState(false); //id
 
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
 	}, [notes]);
+	useEffect(() => {
+		localStorage.setItem("noteBooks", JSON.stringify(noteBooks));
+	}, [noteBooks]);
 
 	const addNote = () => {
 		const newNote = {

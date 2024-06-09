@@ -46,6 +46,7 @@ function Notebooks({
 									type="text"
 									value={newTitle}
 									onChange={(e) => setNewTitle(e.target.value)}
+									onBlur={() => saveTitle(noteBook.id)}
 									onKeyDown={(e) => {
 										if (e.key === "Enter") saveTitle(noteBook.id);
 										if (e.key === "Escape") setEditNotebookId(null);
@@ -54,7 +55,11 @@ function Notebooks({
 							</div>
 						) : (
 							<div>
-								<h6 onDoubleClick={() => startEditing(noteBook)}>
+								<h6
+									onDoubleClick={() => {
+										startEditing(noteBook);
+									}}
+								>
 									{noteBook.title}
 								</h6>
 							</div>
