@@ -1,6 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
 
 function Notebooks({
 	addNoteBook,
@@ -8,7 +9,20 @@ function Notebooks({
 	deleteNoteBook,
 	setActiveNotebook,
 	activeNoteBook,
+	updateNoteBookTitle,
 }) {
+	const [editingNotebookId, setEditNotebookId] = useState(null);
+	const [newTitle, setNewTitle] = useState("");
+
+	const startEditing = (noteBook) => {
+		setEditNotebookId(noteBook.id);
+		setNewTitle(noteBook.title);
+	};
+	const saveTitle = (notebookId) => {
+		updateNoteBookTitle(notebookId, newTitle);
+		setEditNotebookId(null);
+		setNewTitle("");
+	};
 	return (
 		<div className="notebooks section">
 			<div className="header">
@@ -26,7 +40,25 @@ function Notebooks({
 						onClick={() => setActiveNotebook(noteBook.id)}
 						className={`${noteBook.id === activeNoteBook && "activeNotebook"}`}
 					>
-						<h6>{noteBook.title}</h6>
+						{editingNotebookId === noteBook.id ? (
+							<div>
+								<input
+									type="text"
+									value={newTitle}
+									onChange={(e) => setNewTitle(e.target.value)}
+									onKeyDown={(e) => {
+										if (e.key === "Enter") saveTitle(noteBook.id);
+										if (e.key === "Escape") setEditNotebookId(null);
+									}}
+								/>
+							</div>
+						) : (
+							<div>
+								<h6 onDoubleClick={() => startEditing(noteBook)}>
+									{noteBook.title}
+								</h6>
+							</div>
+						)}
 					</div>
 				))}
 			</div>

@@ -80,6 +80,13 @@ function App() {
 			noteBooks.filter((notebook) => notebook.id !== activeNoteBook)
 		);
 	};
+	const updateNoteBookTitle = (id, newTitle) => {
+		setNoteBooks(
+			noteBooks.map((notebook) =>
+				notebook.id === id ? { ...notebook, title: newTitle } : notebook
+			)
+		);
+	};
 
 	return (
 		<div className="app">
@@ -91,6 +98,7 @@ function App() {
 					deleteNoteBook={deleteNoteBook}
 					activeNoteBook={activeNoteBook}
 					setActiveNotebook={setActiveNotebook}
+					updateNoteBookTitle={updateNoteBookTitle}
 				/>
 
 				<Notes
