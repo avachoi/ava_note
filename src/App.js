@@ -12,17 +12,22 @@ function App() {
 		localStorage.notes ? JSON.parse(localStorage.notes) : []
 	);
 	const [activeNote, setActiveNote] = useState(false); //id
+	const [deleted, setDeleted] = useState(
+		localStorage.deleted
+			? JSON.parse(localStorage.deleted)
+			: {
+					id: uuid(),
+					title: "deleted",
+					list: [],
+			  }
+	);
 
 	const allNotes = {
 		id: uuid(),
 		title: "All notes",
 		list: notes,
 	};
-	const deleted = {
-		id: uuid(),
-		title: "deleted",
-		list: [],
-	};
+
 	const [noteBooks, setNoteBooks] = useState(
 		localStorage.noteBooks
 			? JSON.parse(localStorage.noteBooks)
@@ -36,6 +41,10 @@ function App() {
 	useEffect(() => {
 		localStorage.setItem("noteBooks", JSON.stringify(noteBooks));
 	}, [noteBooks]);
+	useEffect(() => {
+		localStorage.setItem("deleted", JSON.stringify(deleted));
+		console.log("deleted", deleted);
+	}, [deleted]);
 
 	const addNote = () => {
 		const newNote = {
@@ -49,6 +58,9 @@ function App() {
 		setActiveNote(newNote.id);
 	};
 	const deleteNote = (idToDeleteNote) => {
+		let deletedNote = notes.find((note) => note.id === idToDeleteNote);
+		let updatedDeletedList = [...deleted.list, deletedNote];
+		setDeleted({ ...deleted, list: updatedDeletedList });
 		setNotes(notes.filter((note) => note.id !== idToDeleteNote));
 	};
 
