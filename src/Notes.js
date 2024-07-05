@@ -1,11 +1,10 @@
 function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 	const sortedNotes = notes.sort((a, b) => b.date - a.date);
 	return (
-		<div className="notes section">
+		<div className="notes">
 			<div className="header">
 				<h2 className="heading">Notes</h2>
 				<button onClick={addNote}>+</button>
-				<button onClick={() => deleteNote(activeNote)}>-</button>
 			</div>
 
 			<div className="notesList">
@@ -33,6 +32,9 @@ function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 					</div>
 				))}
 			</div>
+			<button onClick={() => deleteNote(activeNote)}>
+				<img src="trash.png" alt="trashImg" className="note_trash" />
+			</button>
 		</div>
 	);
 }

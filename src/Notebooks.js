@@ -26,11 +26,9 @@ function Notebooks({
 	return (
 		<div className="notebooks section">
 			<div className="header">
-				<h3 className="heading">Notebooks</h3>
-
-				<button onClick={addNoteBook}>+</button>
-
-				<button onClick={deleteNoteBook}>-</button>
+				<button onClick={addNoteBook}>
+					<img src="add.png" alt="plusIcon" width="150px" />
+				</button>
 			</div>
 
 			<div className="noteBooksList">
@@ -67,6 +65,9 @@ function Notebooks({
 					</div>
 				))}
 			</div>
+			<button onClick={deleteNoteBook}>
+				<img src="trash.png" alt="trashImg" className="trash" />
+			</button>
 		</div>
 	);
 }

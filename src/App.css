@@ -12,6 +12,9 @@
 
 	height: 750px;
 }
+.section {
+	padding: 20px;
+}
 /*app_header*/
 .app_header {
 	display: flex;
@@ -70,9 +73,15 @@ h5 {
 	color: #9a9c9f;
 }
 .activeNotebook {
-	color: #898efd;
+	color: #737af8;
 }
-
+.trash {
+	opacity: 0.5;
+	width: 20px;
+	position: absolute;
+	top: 650px;
+	left: 100px;
+}
 /* notes */
 .notes {
 	background-color: #f8f7fe;
@@ -92,14 +101,19 @@ h5 {
 	margin: 0px;
 	font-weight: bold;
 }
-.header > * {
-	margin: 15px;
-}
+
 .note {
 	border-bottom: 2px solid #edebf7;
 }
 .activeNote {
 	background-color: white;
+}
+.note_trash {
+	opacity: 0.5;
+	width: 20px;
+	position: absolute;
+	top: 650px;
+	left: 370px;
 }
 /* main */
 .main {
