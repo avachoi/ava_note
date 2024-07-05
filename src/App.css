@@ -12,6 +12,7 @@
 
 	height: 750px;
 }
+/*app_header*/
 .app_header {
 	display: flex;
 	flex-direction: row;
@@ -19,19 +20,34 @@
 	width: 1200px;
 	margin: auto;
 	height: 69px;
-	border-bottom: 1px solid #9e9fab;
+	border-bottom: 2px solid #edebf7;
 }
 .appName {
 	width: 226px;
+	text-align: center;
+	padding-top: 20px;
+}
+.logoText {
+	font-size: 20px;
+	font-weight: 900;
 }
 .search {
-	/* width: 800px; */
-	border-left: 2px solid #9e9fab;
+	width: 748px;
+	border-left: 2px solid #edebf7;
+	padding: 20px;
+	color: #b5b4d0;
+}
+.search img {
+	margin-right: 10px;
 }
 .user {
 	align-content: center;
 	text-align: center;
-	width: 200px;
+	width: 226px;
+	color: #747b8a;
+}
+.user img {
+	padding-right: 10px;
 }
 
 .content {
@@ -47,22 +63,22 @@ h5 {
 .heading {
 	font-size: 20px;
 }
-.section {
-	padding: 10px;
-}
+
 /* notebooks */
 .notebooks {
 	width: 226px;
+	color: #9a9c9f;
 }
 .activeNotebook {
-	color: red;
-	border: 2px solid black;
+	color: #898efd;
 }
 
 /* notes */
 .notes {
 	background-color: #f8f7fe;
 	width: 324px;
+	border-left: 2px solid #edebf7;
+	border-right: 2px solid #edebf7;
 }
 .noteDate {
 	color: grey;
@@ -74,21 +90,24 @@ h5 {
 }
 .previewTitle {
 	margin: 0px;
+	font-weight: bold;
 }
 .header > * {
 	margin: 15px;
 }
-
+.note {
+	border-bottom: 2px solid #edebf7;
+}
+.activeNote {
+	background-color: white;
+}
 /* main */
 .main {
 	display: flex;
 	flex-direction: column;
-	width: 850px;
+	/* width: 850px; */
 }
-.active {
-	border: 2px solid #f1b4c9;
-	border-radius: 5px;
-}
+
 .editPart {
 	display: flex;
 	flex-direction: column;

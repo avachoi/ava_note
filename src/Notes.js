@@ -14,11 +14,11 @@ function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 						key={note.id}
 						onClick={() => setActiveNote(note.id)}
 						value={note.id}
-						className={`${note.id === activeNote && "active"}`}
+						className={`note ${note.id === activeNote && "activeNote"}`}
 					>
-						<h4 className="previewTitle">{`${
+						<h6 className="previewTitle">{`${
 							note.title === "" ? "new note" : note.title
-						}`}</h4>
+						}`}</h6>
 						<p className="previewBody">
 							{note.body && note.body.substr(0, 20) + "..."}
 						</p>

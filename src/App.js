@@ -111,11 +111,17 @@ function App() {
 		<div className="body">
 			<div className="app">
 				<div className="app_header">
-					<div className="appName">AvaName</div>
-					<div className="search">Search</div>
+					<div className="appName">
+						<img src="noteLogo.png" width="20px" alt="logo" />
+						<span className="logoText">Ava Note</span>
+					</div>
+					<div className="search">
+						<img src="mag.png" width="20px" />
+						Search
+					</div>
 					<div className="user">
-						<img src="avatar.png" width="50px" alt="user_image" />
-						<span>Ava Choi</span>
+						<img src="lightUser.png" width="30px" alt="user_image" />
+						<span>Jennifer Gardener</span>
 					</div>
 				</div>
 				<div className="content">
