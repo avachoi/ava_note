@@ -108,27 +108,36 @@ function App() {
 	};
 
 	return (
-		<div className="app">
-			<h3 className="appName">Ava Note</h3>
-			<div className="content">
-				<Notebooks
-					addNoteBook={addNoteBook}
-					noteBooks={noteBooks}
-					deleteNoteBook={deleteNoteBook}
-					activeNoteBook={activeNoteBook}
-					setActiveNotebook={setActiveNotebook}
-					updateNoteBookTitle={updateNoteBookTitle}
-				/>
+		<div className="body">
+			<div className="app">
+				<div className="app_header">
+					<div className="appName">AvaName</div>
+					<div className="search">Search</div>
+					<div className="user">
+						<img src="avatar.png" width="50px" alt="user_image" />
+						<span>Ava Choi</span>
+					</div>
+				</div>
+				<div className="content">
+					<Notebooks
+						addNoteBook={addNoteBook}
+						noteBooks={noteBooks}
+						deleteNoteBook={deleteNoteBook}
+						activeNoteBook={activeNoteBook}
+						setActiveNotebook={setActiveNotebook}
+						updateNoteBookTitle={updateNoteBookTitle}
+					/>
 
-				<Notes
-					notes={notes}
-					addNote={addNote}
-					deleteNote={deleteNote}
-					activeNote={activeNote}
-					setActiveNote={setActiveNote}
-				/>
+					<Notes
+						notes={notes}
+						addNote={addNote}
+						deleteNote={deleteNote}
+						activeNote={activeNote}
+						setActiveNote={setActiveNote}
+					/>
 
-				<Main activeNote={selectNote()} editNotes={editNotes} />
+					<Main activeNote={selectNote()} editNotes={editNotes} />
+				</div>
 			</div>
 		</div>
 	);

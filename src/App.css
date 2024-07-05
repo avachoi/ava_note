@@ -1,21 +1,46 @@
-.appName {
-	padding: 10px;
+.body {
+	background-color: #555871;
+	height: 1500px;
 }
+.app {
+	position: relative;
+	top: 100px;
+	border: 1px solid black;
+	background-color: white;
+	width: 1200px;
+	margin: auto;
+
+	height: 750px;
+}
+.app_header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 1200px;
+	margin: auto;
+	height: 69px;
+	border-bottom: 1px solid #9e9fab;
+}
+.appName {
+	width: 226px;
+}
+.search {
+	/* width: 800px; */
+	border-left: 2px solid #9e9fab;
+}
+.user {
+	align-content: center;
+	text-align: center;
+	width: 200px;
+}
+
 .content {
-	border: 5px solid #e1f2ec;
 	display: flex;
 
-	margin: auto;
 	width: 1200px;
-	height: 800px;
+	height: 680px;
 }
-.appName {
-	text-align: center;
-	color: rgb(251, 156, 171);
-}
-.header {
-	text-align: center;
-}
+
 h5 {
 	color: blue;
 }
@@ -27,7 +52,7 @@ h5 {
 }
 /* notebooks */
 .notebooks {
-	background-color: #f1ebed;
+	width: 226px;
 }
 .activeNotebook {
 	color: red;
@@ -36,8 +61,8 @@ h5 {
 
 /* notes */
 .notes {
-	background-color: #e1f2ec;
-	width: 200px;
+	background-color: #f8f7fe;
+	width: 324px;
 }
 .noteDate {
 	color: grey;
