@@ -26,8 +26,11 @@ function Notebooks({
 	return (
 		<div className="notebooks section">
 			<div className="header">
-				<button onClick={addNoteBook}>
-					<img src="add.png" alt="plusIcon" width="150px" />
+				<button onClick={addNoteBook} className="addNotebook">
+					<img src="newFolder.png" alt="plusIcon" width="20px" />
+				</button>
+				<button onClick={deleteNoteBook}>
+					<img src="trash.png" alt="trashImg" className="trash" />
 				</button>
 			</div>
 
@@ -36,7 +39,9 @@ function Notebooks({
 					<div
 						key={noteBook.id}
 						onClick={() => setActiveNotebook(noteBook.id)}
-						className={`${noteBook.id === activeNoteBook && "activeNotebook"}`}
+						className={`notebook ${
+							noteBook.id === activeNoteBook && "activeNotebook"
+						}`}
 					>
 						{editingNotebookId === noteBook.id ? (
 							<div>
@@ -65,9 +70,6 @@ function Notebooks({
 					</div>
 				))}
 			</div>
-			<button onClick={deleteNoteBook}>
-				<img src="trash.png" alt="trashImg" className="trash" />
-			</button>
 		</div>
 	);
 }

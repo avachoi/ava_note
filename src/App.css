@@ -15,6 +15,10 @@
 .section {
 	padding: 20px;
 }
+button {
+	padding: 0px;
+}
+
 /*app_header*/
 .app_header {
 	display: flex;
@@ -30,9 +34,14 @@
 	text-align: center;
 	padding-top: 20px;
 }
+.appName img {
+	padding-right: 10px;
+}
 .logoText {
 	font-size: 20px;
 	font-weight: 900;
+	font-family: "montserra", sans-serif;
+	color: #848484;
 }
 .search {
 	width: 748px;
@@ -60,9 +69,6 @@
 	height: 680px;
 }
 
-h5 {
-	color: blue;
-}
 .heading {
 	font-size: 20px;
 }
@@ -71,16 +77,25 @@ h5 {
 .notebooks {
 	width: 226px;
 	color: #9a9c9f;
+	overflow: scroll;
+}
+.notebook:hover {
+	cursor: pointer;
 }
 .activeNotebook {
 	color: #737af8;
 }
+.addNotebook {
+	opacity: 0.5;
+}
 .trash {
 	opacity: 0.5;
 	width: 20px;
-	position: absolute;
-	top: 650px;
-	left: 100px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 20px;
 }
 /* notes */
 .notes {
@@ -88,6 +103,17 @@ h5 {
 	width: 324px;
 	border-left: 2px solid #edebf7;
 	border-right: 2px solid #edebf7;
+}
+.note_header {
+	padding: 20px 20px 0px 20px;
+	display: flex;
+	justify-content: space-between;
+}
+button.addNewNote {
+	padding: 0px;
+}
+button.addNewNote img {
+	opacity: 0.5;
 }
 .noteDate {
 	color: grey;
@@ -104,6 +130,10 @@ h5 {
 
 .note {
 	border-bottom: 2px solid #edebf7;
+	padding: 20px;
+}
+.note:hover {
+	cursor: pointer;
 }
 .activeNote {
 	background-color: white;
@@ -111,9 +141,6 @@ h5 {
 .note_trash {
 	opacity: 0.5;
 	width: 20px;
-	position: absolute;
-	top: 650px;
-	left: 370px;
 }
 /* main */
 .main {

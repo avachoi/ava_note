@@ -112,7 +112,7 @@ function App() {
 			<div className="app">
 				<div className="app_header">
 					<div className="appName">
-						<img src="noteLogo.png" width="20px" alt="logo" />
+						<img src="logo3.png" width="30px" alt="logo" />
 						<span className="logoText">Ava Note</span>
 					</div>
 					<div className="search">
