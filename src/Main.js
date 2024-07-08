@@ -17,18 +17,19 @@ function Main({ activeNote, editNotes }) {
 		<div className="main section">
 			<div className="mainButtons">
 				<button className="edit" onClick={() => setState("edit")}>
-					edit
+					<img src="edit.png" alt="editButton" width="20px" />
 				</button>
 				<button className="done" onClick={() => setState("done")}>
-					done
+					<img src="save.png" alt="saveButton" width="20px" />
 				</button>
+				<p className="updatedDate">
+					{new Date(activeNote.date).toLocaleDateString("en-US", {
+						hour: "2-digit",
+						minute: "2-digit",
+					})}
+				</p>
 			</div>
-			<p>
-				{new Date(activeNote.date).toLocaleDateString("en-US", {
-					hour: "2-digit",
-					minute: "2-digit",
-				})}
-			</p>
+
 			{state === "done" ? (
 				<div className="afterDone">
 					<h1 className="doneTitle">{activeNote.title}</h1>

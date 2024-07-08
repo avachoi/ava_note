@@ -4,7 +4,7 @@ function Notes({ notes, addNote, deleteNote, activeNote, setActiveNote }) {
 		<div className="notes">
 			<div className="note_header">
 				<button onClick={addNote} className="addNewNote">
-					<img src="newFile.png" width="20px" alt="newNote"></img>
+					<img src="plus.png" width="20px" alt="newNote"></img>
 				</button>
 				<button onClick={() => deleteNote(activeNote)}>
 					<img src="trash.png" alt="trashImg" className="note_trash" />
