@@ -22,29 +22,48 @@ function App() {
 			  }
 	);
 
-	const allNotes = {
-		id: uuid(),
-		title: "All notes",
-		list: notes,
-	};
-
 	const [noteBooks, setNoteBooks] = useState(
-		localStorage.noteBooks
-			? JSON.parse(localStorage.noteBooks)
-			: [allNotes, deleted]
+		localStorage.noteBooks ? JSON.parse(localStorage.noteBooks) : []
 	);
 	const [activeNoteBook, setActiveNotebook] = useState(false); //id
 
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
+		setAllNotes();
 	}, [notes]);
+
 	useEffect(() => {
 		localStorage.setItem("noteBooks", JSON.stringify(noteBooks));
 	}, [noteBooks]);
+
 	useEffect(() => {
 		localStorage.setItem("deleted", JSON.stringify(deleted));
 		console.log("deleted", deleted);
 	}, [deleted]);
+	// useEffect(() => {
+	// 	localStorage.setItem("allNotes", JSON.stringify(notes));
+	// });
+	// useEffect(() => {
+	// 	setAllNotes(notes);
+	// });
+	const setAllNotes = () => {
+		const allNotesNotebook = {
+			id: uuid(),
+			title: "All Notes",
+			list: notes,
+		};
+		const deletedNotebook = {
+			id: uuid(),
+			title: "Deleted",
+			list: deleted,
+		};
+		setNoteBooks((prevNoteBooks) => {
+			const updatedNotebooks = prevNoteBooks.filter(
+				(nb) => nb.title !== "All Notes" && nb.title !== "Deleted"
+			);
+			return [allNotesNotebook, ...updatedNotebooks, deletedNotebook];
+		});
+	};
 
 	const addNote = () => {
 		const newNote = {

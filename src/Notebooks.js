@@ -38,7 +38,10 @@ function Notebooks({
 				{noteBooks.map((noteBook) => (
 					<div
 						key={noteBook.id}
-						onClick={() => setActiveNotebook(noteBook.id)}
+						onClick={() => {
+							setActiveNotebook(noteBook.id);
+							console.log(noteBook);
+						}}
 						className={`notebook ${
 							noteBook.id === activeNoteBook && "activeNotebook"
 						}`}

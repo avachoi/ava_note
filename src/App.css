@@ -195,8 +195,9 @@ button {
 	height: 500px;
 }
 .editTitle {
-	font-size: 30px;
+	font-size: 25px;
 	border: none;
+	font-weight: 500;
 }
 .editTextarea {
 	border: none;
@@ -219,4 +220,17 @@ button {
 	vertical-align: bottom;
 	margin-top: 10px;
 	margin-bottom: 0px;
+}
+input:focus {
+	outline: none;
+}
+textarea:focus {
+	outline: none;
+}
+input,
+textarea {
+	color: #393939;
+}
+.doneTitle {
+	font-size: 27px;
 }
