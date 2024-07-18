@@ -11,7 +11,7 @@ function App() {
 	const [notes, setNotes] = useState(
 		localStorage.notes ? JSON.parse(localStorage.notes) : []
 	);
-	const [activeNote, setActiveNote] = useState(false); //id
+	const [activeNote, setActiveNote] = useState(notes); //id
 	const [deleted, setDeleted] = useState(
 		localStorage.deleted
 			? JSON.parse(localStorage.deleted)
