@@ -11,7 +11,12 @@ function App() {
 	const [notes, setNotes] = useState(
 		localStorage.notes ? JSON.parse(localStorage.notes) : []
 	);
-	const [activeNote, setActiveNote] = useState(notes); //id
+	const allNotesNotebook = {
+		id: uuid(),
+		title: "All Notes",
+		list: notes,
+	};
+	const [activeNote, setActiveNote] = useState(false); //id
 	const [deleted, setDeleted] = useState(
 		localStorage.deleted
 			? JSON.parse(localStorage.deleted)
@@ -40,23 +45,16 @@ function App() {
 		localStorage.setItem("deleted", JSON.stringify(deleted));
 		console.log("deleted", deleted);
 	}, [deleted]);
-	// useEffect(() => {
-	// 	localStorage.setItem("allNotes", JSON.stringify(notes));
-	// });
-	// useEffect(() => {
-	// 	setAllNotes(notes);
-	// });
+
+	//be called when change in notes
 	const setAllNotes = () => {
-		const allNotesNotebook = {
-			id: uuid(),
-			title: "All Notes",
-			list: notes,
-		};
 		const deletedNotebook = {
 			id: uuid(),
 			title: "Deleted",
 			list: deleted,
 		};
+
+		//reset and rerender notebook list with updates
 		setNoteBooks((prevNoteBooks) => {
 			const updatedNotebooks = prevNoteBooks.filter(
 				(nb) => nb.title !== "All Notes" && nb.title !== "Deleted"

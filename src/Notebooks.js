@@ -40,7 +40,7 @@ function Notebooks({
 						key={noteBook.id}
 						onClick={() => {
 							setActiveNotebook(noteBook.id);
-							console.log(noteBook);
+							console.log("activeNoteBook", activeNoteBook);
 						}}
 						className={`notebook ${
 							noteBook.id === activeNoteBook && "activeNotebook"

@@ -157,6 +157,7 @@ button.addNewNote img {
 	display: flex;
 	flex-direction: column;
 	width: 650px;
+	overflow: scroll;
 }
 
 .editPart {
