@@ -24,26 +24,8 @@ function App() {
 	const [noteBooks, setNoteBooks] = useState(
 		localStorage.noteBooks ? JSON.parse(localStorage.noteBooks) : []
 	);
-	const [activeNoteBook, setActiveNotebook] = useState(
-		localStorage.activeNoteBook || "allNotes"
-	); //id
+	const [activeNoteBook, setActiveNotebook] = useState("allNotes"); //id
 	const [noteBooksToRender, setNoteBooksToRender] = useState([]);
-	useEffect(() => {
-		localStorage.setItem("notes", JSON.stringify(notes));
-		localStorage.setItem("activeNoteBook", activeNoteBook);
-	}, [notes, activeNoteBook]);
-
-	useEffect(() => {
-		localStorage.setItem("noteBooks", JSON.stringify(noteBooks));
-	}, [noteBooks]);
-
-	useEffect(() => {
-		localStorage.setItem("deleted", JSON.stringify(deleted));
-	}, [deleted]);
-
-	useEffect(() => {
-		selectNoteListToRender();
-	}, [activeNoteBook]);
 
 	const setAllNotes = useCallback(() => {
 		const allNotesNotebook = {
@@ -92,7 +74,7 @@ function App() {
 		let selectedNote = notes.find((note) => note.id === activeNote);
 		return selectedNote;
 	};
-	const selectNoteListToRender = () => {
+	const selectNoteListToRender = useCallback(() => {
 		let selectedNoteBook = noteBooks.find(
 			(notebook) => notebook.id === activeNoteBook
 		);
@@ -105,7 +87,7 @@ function App() {
 			console.log("error to render noteList");
 			return [];
 		}
-	};
+	}, [noteBooks, activeNoteBook]);
 
 	const editNotes = (editedNote) => {
 		let editiedNotes = notes.map((note) => {
@@ -139,6 +121,23 @@ function App() {
 		);
 	};
 
+	useEffect(() => {
+		localStorage.setItem("notes", JSON.stringify(notes));
+		localStorage.setItem("activeNoteBook", activeNoteBook);
+	}, [notes, activeNoteBook]);
+
+	useEffect(() => {
+		localStorage.setItem("noteBooks", JSON.stringify(noteBooks));
+	}, [noteBooks]);
+
+	useEffect(() => {
+		localStorage.setItem("deleted", JSON.stringify(deleted));
+	}, [deleted]);
+
+	useEffect(() => {
+		selectNoteListToRender();
+	}, [activeNoteBook, selectNoteListToRender]);
+
 	return (
 		<div className="body">
 			<div className="app">
@@ -148,7 +147,7 @@ function App() {
 						<span className="logoText">Ava Note</span>
 					</div>
 					<div className="search">
-						<img src="mag.png" width="20px" />
+						<img src="mag.png" width="20px" alt="search" />
 						Search
 					</div>
 					<div className="user">
