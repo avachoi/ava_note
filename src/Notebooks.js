@@ -10,6 +10,7 @@ function Notebooks({
 	setActiveNotebook,
 	activeNoteBook,
 	updateNoteBookTitle,
+	selectNoteListToRender,
 }) {
 	const [editingNotebookId, setEditNotebookId] = useState(null);
 	const [newTitle, setNewTitle] = useState("");
@@ -40,7 +41,6 @@ function Notebooks({
 						key={noteBook.id}
 						onClick={() => {
 							setActiveNotebook(noteBook.id);
-							console.log("activeNoteBook", activeNoteBook);
 						}}
 						className={`notebook ${
 							noteBook.id === activeNoteBook && "activeNotebook"

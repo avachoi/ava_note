@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import uuid from "react-uuid";
 import "./App.css";
 import Notebooks from "./Notebooks";
 import Notes from "./Notes";
 import Main from "./Main";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
 	const [notes, setNotes] = useState(
 		localStorage.notes ? JSON.parse(localStorage.notes) : []
 	);
-	const allNotesNotebook = {
-		id: uuid(),
-		title: "All Notes",
-		list: notes,
-	};
+
 	const [activeNote, setActiveNote] = useState(false); //id
 	const [deleted, setDeleted] = useState(
 		localStorage.deleted
@@ -30,12 +24,14 @@ function App() {
 	const [noteBooks, setNoteBooks] = useState(
 		localStorage.noteBooks ? JSON.parse(localStorage.noteBooks) : []
 	);
-	const [activeNoteBook, setActiveNotebook] = useState(false); //id
-
+	const [activeNoteBook, setActiveNotebook] = useState(
+		localStorage.activeNoteBook || "allNotes"
+	); //id
+	const [noteBooksToRender, setNoteBooksToRender] = useState([]);
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
-		setAllNotes();
-	}, [notes]);
+		localStorage.setItem("activeNoteBook", activeNoteBook);
+	}, [notes, activeNoteBook]);
 
 	useEffect(() => {
 		localStorage.setItem("noteBooks", JSON.stringify(noteBooks));
@@ -43,25 +39,36 @@ function App() {
 
 	useEffect(() => {
 		localStorage.setItem("deleted", JSON.stringify(deleted));
-		console.log("deleted", deleted);
 	}, [deleted]);
 
-	//be called when change in notes
-	const setAllNotes = () => {
+	useEffect(() => {
+		selectNoteListToRender();
+	}, [activeNoteBook]);
+
+	const setAllNotes = useCallback(() => {
+		const allNotesNotebook = {
+			id: "allNotes",
+			title: "All Notes",
+			list: notes,
+		};
 		const deletedNotebook = {
-			id: uuid(),
+			id: "deleted",
 			title: "Deleted",
-			list: deleted,
+			list: deleted.list,
 		};
 
-		//reset and rerender notebook list with updates
 		setNoteBooks((prevNoteBooks) => {
 			const updatedNotebooks = prevNoteBooks.filter(
-				(nb) => nb.title !== "All Notes" && nb.title !== "Deleted"
+				(nb) => nb.id !== "allNotes" && nb.id !== "deleted"
 			);
 			return [allNotesNotebook, ...updatedNotebooks, deletedNotebook];
 		});
-	};
+	}, [notes, deleted]);
+
+	// Call setAllNotes when the app initializes
+	useEffect(() => {
+		setAllNotes();
+	}, [setAllNotes]); // Include setAllNotes in the dependency array
 
 	const addNote = () => {
 		const newNote = {
@@ -85,11 +92,19 @@ function App() {
 		let selectedNote = notes.find((note) => note.id === activeNote);
 		return selectedNote;
 	};
-	const selectNoteBook = () => {
-		let selectedNotBook = noteBooks.find(
+	const selectNoteListToRender = () => {
+		let selectedNoteBook = noteBooks.find(
 			(notebook) => notebook.id === activeNoteBook
 		);
-		return selectedNotBook;
+
+		if (selectedNoteBook && Array.isArray(selectedNoteBook.list)) {
+			console.log("selectedNoteBook", selectedNoteBook);
+			setNoteBooksToRender(selectedNoteBook.list);
+			return selectedNoteBook.list;
+		} else {
+			console.log("error to render noteList");
+			return [];
+		}
 	};
 
 	const editNotes = (editedNote) => {
@@ -104,7 +119,7 @@ function App() {
 	const addNoteBook = () => {
 		const newNoteBook = {
 			id: uuid(),
-			title: "new notebook",
+			title: "New Notebook",
 			list: [],
 		};
 		const updatedNotebooks = [newNoteBook, ...noteBooks];
@@ -149,10 +164,11 @@ function App() {
 						activeNoteBook={activeNoteBook}
 						setActiveNotebook={setActiveNotebook}
 						updateNoteBookTitle={updateNoteBookTitle}
+						selectNoteListToRender={selectNoteListToRender}
 					/>
 
 					<Notes
-						notes={notes}
+						notes={noteBooksToRender}
 						addNote={addNote}
 						deleteNote={deleteNote}
 						activeNote={activeNote}
