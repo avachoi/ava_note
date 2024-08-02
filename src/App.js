@@ -62,6 +62,7 @@ function App() {
 		const updatedNote = [newNote, ...notes];
 		setNotes(updatedNote);
 		setActiveNote(newNote.id);
+		selectNote();
 	};
 	const deleteNote = (idToDeleteNote) => {
 		let deletedNote = notes.find((note) => note.id === idToDeleteNote);
