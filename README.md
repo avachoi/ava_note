@@ -1,5 +1,3 @@
 # Ava Note
 
-
-## Wireframe
-![Screen Shot 2024-05-23 at 6 57 08 PM](https://github.com/avachoi/ava_note/assets/72422987/10618f9a-946e-44fd-97fa-7fb93c137538)
+![Screen Shot 2024-07-04 at 5 13 19 PM](https://github.com/user-attachments/assets/9b2f6f82-5129-4dfe-9fcf-33dc4f5cc010)
